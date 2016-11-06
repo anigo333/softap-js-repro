@@ -4,15 +4,23 @@
   </head>
 
   <body>
+  Result of obtaining RSA Key is:
     <div id="repro" />
 
     <!-- Check out http://jamjs.org/ for more info. -->
     <script src="test-browser.js"></script>
 
     <script>
+    try{
         var x = new TestRSA();
         var m = x.PerformTest().exportKey('pkcs8-public');
         document.getElementById('repro').innerHTML = m;
+      }
+      catch(err)
+      {
+        document.getElementById('repro').innerHTML = err;
+        document.getElementById('repro').innerHTML += err.stack;
+      }
     </script>
   </body>
 </html>
